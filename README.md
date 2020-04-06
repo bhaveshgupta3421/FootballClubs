@@ -24,4 +24,8 @@ yarn react-native run-android (in another terminal with one of emulator opened)
 
 ## APIs used
  Media Wiki API (for getting content of football clubs in india)
+ 
+ ## Snapshots
+ ![Image description](https://github.com/bhaveshgupta3421/FootballClubs/blob/master/wiki1.png)
+ ![Image description](https://github.com/bhaveshgupta3421/FootballClubs/blob/master/wiki.png)
 
