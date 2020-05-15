@@ -13,6 +13,7 @@
     "@expo/vector-icons": "^10.0.6",
     "axios": "^0.19.2",
     "expo-font": "^8.1.0",
+    "nodejs-mobile-react-native": "^0.5.0",
     "react": "16.11.0",
     "react-native": "0.62.1",
     "react-native-elements": "^1.2.7",

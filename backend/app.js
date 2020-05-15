@@ -2,6 +2,11 @@ const express = require('express');
 const app = express()
 const fetch = require("node-fetch");
 
+const PORT = 8080;
+app.listen(PORT, function () {
+    console.log('Server is ready at ' + PORT)
+})
+
 let contentUrl = 'https://en.wikipedia.org/w/api.php?action=query&prop=revisions&rvprop=content&format=json&titles='
 let data = ''
 let allStates = [
@@ -39,12 +44,10 @@ async function fetchData() {
         .then(res => {
             data = res.query.pages['772674'].revisions[0]['*']
             data = data.split('===')
-            allStates.map((state,j) => {
+            allStates.map((state, j) => {
                 i = data.indexOf(state);
                 let each = data[i + 1].split(/\n+/);
                 let stateClubs = new Object()
-                console.log(each)
-                // let stateClubs = { state: state, clubs: [] }
                 stateClubs.state = state
                 let c = []
                 each.map((line) => {
@@ -78,14 +81,8 @@ app.get('/', function (req, res) {
     res.send(clubs)
 })
 app.post('/', function (req, res) {
-    
-    // console.log('jihhjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj')
-    // console.log(req.body[0].clubs[0].cnt)
-    clubs=req.body
+
+    clubs = req.body
     console.log(clubs[0].clubs[0].cnt)
 
-})
-const PORT = 8080;
-app.listen(PORT, function () {
-    console.log('Server is ready at ' + PORT)
 })

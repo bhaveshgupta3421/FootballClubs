@@ -10,14 +10,24 @@ import {
 import { ListItem, } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import axios from 'axios';
-
-
-
+import nodejs from 'nodejs-mobile-react-native';
 
 const App = () => {
+  useEffect(
+    () => {
+      nodejs.start("main.js");
+      nodejs.channel.addListener(
+        "message",
+        (msg) => {
+          alert(msg);
+        },
+        App
+      )
+    }, [lod])
   const [selectedValue, setSelectedValue] = useState('-1');
-  const [data, setData] = useState()
-  const [load, setLoad] = useState(false)
+  const [data, setData] = useState();
+  const [load, setLoad] = useState(false);
+  const [lod, setLod] = useState(false)
 
   async function fetchData() {
     const res = await fetch('http://192.168.137.1:8080/');
@@ -28,7 +38,6 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log(123456)
     fetchData();
   }, [load]);
   const postData = () => {
